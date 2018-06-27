@@ -9,7 +9,7 @@ from flask import Flask, jsonify, request
 from bs4 import BeautifulSoup
 
 
-class Blockchain:
+class Tootchain:
 
     def __init__(self):
         self.current_transactions = []
@@ -21,6 +21,7 @@ class Blockchain:
 
         self.initialize_mastodon()
 
+        #self.new_block(previous_hash='1', proof=100)
 
     def new_block(self, proof, previous_hash):
         """
@@ -53,7 +54,7 @@ class Blockchain:
         }
 
         # Toot the formatted block
-        self.mastodon.status_post(json.dumps(block, indent=2, sort_keys=True), visibility='unlisted')
+        self.mastodon.status_post(json.dumps(block), visibility='unlisted')
 
         # Append the block to the chain
         # self.chain.append(block)
@@ -94,6 +95,8 @@ class Blockchain:
         return int(last_block_json['proof'])
 
     def last_hash(self):
+
+        print("last Hash:"+self.hash(self.last_block()))
         return str(self.hash(self.last_block()))
 
     @staticmethod
@@ -105,7 +108,7 @@ class Blockchain:
         """
 
         # We must make sure that the Dictionary is Ordered, or we'll have inconsistent hashes
-        block_string = json.dumps(str(block), sort_keys=True).encode()
+        block_string = json.dumps(block, sort_keys=True).encode()
         return hashlib.sha256(block_string).hexdigest()
 
     def proof_of_work(self):
@@ -139,6 +142,9 @@ class Blockchain:
 
         guess = f'{last_proof}{proof}{last_hash}'.encode()
         guess_hash = hashlib.sha256(guess).hexdigest()
+
+        if guess_hash[:4] == "0000":
+            print(str(last_proof)+" | "+str(proof)+" | "+guess_hash)
         return guess_hash[:4] == "0000"
 
     # initialize Mastodon
@@ -214,13 +220,12 @@ class Blockchain:
 app = Flask(__name__)
 
 # Instantiate the Blockchain
-blockchain = Blockchain()
+blockchain = Tootchain()
 
 
 @app.route('/mine', methods=['GET'])
 def mine():
     # We run the proof of work algorithm to get the next proof...
-    last_block = blockchain.last_block
     proof = blockchain.proof_of_work()
 
     # Forge the new Block by adding it to the chain
@@ -261,7 +266,7 @@ def new_transaction():
 @app.route('/mention', methods=['GET'])
 def check_for_new_tx():
     blockchain.get_notifications()
-    return "t"
+    return " "
 
 
 if __name__ == '__main__':

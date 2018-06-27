@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="467c2817-17ea-4e69-9337-19073f215dd2" name="Default" comment="initial commit of tootchaind">
+    <list default="true" id="467c2817-17ea-4e69-9337-19073f215dd2" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/verify.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tootchain.py" beforeDir="false" afterPath="$PROJECT_DIR$/tootchain.py" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.idea/httpRequests/" />
@@ -15,17 +15,30 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/tootchain$tootchain.coverage" NAME="tootchain Coverage Results" MODIFIED="1530105472200" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/tootchain$tootchain.coverage" NAME="tootchain Coverage Results" MODIFIED="1530109725600" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/tootchain$verify.coverage" NAME="verify Coverage Results" MODIFIED="1530110405268" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/tootchain$blckchn.coverage" NAME="blckchn Coverage Results" MODIFIED="1530087873243" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/tootchain$blockchain.coverage" NAME="blockchain Coverage Results" MODIFIED="1530083476471" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="tootchain.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="tootchain.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tootchain.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1157">
-              <caret line="123" column="34" selection-start-line="123" selection-start-column="25" selection-end-line="123" selection-end-column="34" />
+            <state relative-caret-position="205">
+              <caret line="91" lean-forward="true" selection-end-line="280" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="verify.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/verify.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="439">
+              <caret line="84" column="53" lean-forward="true" selection-start-line="84" selection-start-column="53" selection-end-line="84" selection-end-column="53" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -64,20 +77,25 @@
       <find>self.current_transactions</find>
       <find>20</find>
       <find>toot</find>
-      <find>new_block</find>
       <find>prev</find>
       <find>clean_html</find>
       <find>chain.</find>
       <find>self.chain.</find>
       <find>mine</find>
-      <find>index</find>
-      <find>print</find>
       <find>previous_hash</find>
       <find>dict</find>
       <find>def last_block</find>
       <find>proof</find>
       <find>last_block()</find>
       <find>last_block</find>
+      <find>index</find>
+      <find>valid_proof</find>
+      <find>print</find>
+      <find>def hash</find>
+      <find>new_block</find>
+      <find>def new_b</find>
+      <find>hash</find>
+      <find>hash(</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -97,6 +115,7 @@
         <option value="$PROJECT_DIR$/MastodonClass.py" />
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/tootchain.py" />
+        <option value="$PROJECT_DIR$/verify.py" />
       </list>
     </option>
   </component>
@@ -618,7 +637,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.tootchain">
+  <component name="RunManager" selected="Python.verify">
     <configuration name="blckchn" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="tootchain" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -676,13 +695,34 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <configuration name="verify" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="tootchain" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/verify.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <list>
       <item itemvalue="Python.blockchain" />
       <item itemvalue="Python.blckchn" />
       <item itemvalue="Python.tootchain" />
+      <item itemvalue="Python.verify" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.verify" />
         <item itemvalue="Python.tootchain" />
         <item itemvalue="Python.blckchn" />
         <item itemvalue="Python.blockchain" />
@@ -700,21 +740,36 @@
       <option name="presentableId" value="Default" />
       <updated>1530082027417</updated>
     </task>
+    <task id="LOCAL-00001" summary="updated code">
+      <created>1530107132724</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1530107132724</updated>
+    </task>
+    <task id="LOCAL-00002" summary="fix last_hash def">
+      <created>1530107942878</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1530107942878</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" sideWeight="0.50065106" side_tool="true" weight="0.32965517" />
       <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
       <window_info anchor="bottom" id="REST Client" weight="0.43724138" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49934897" visible="true" weight="0.19586207" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49934897" weight="0.19586207" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Python Console" />
       <window_info anchor="bottom" id="Terminal" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22526042" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22526042" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="right" id="Database" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32965517" />
@@ -741,6 +796,9 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
+    <MESSAGE value="updated code" />
+    <MESSAGE value="fix last_hash def" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix last_hash def" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/blckchn.py">
@@ -809,8 +867,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tootchain.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1157">
-          <caret line="123" column="34" selection-start-line="123" selection-start-column="25" selection-end-line="123" selection-end-column="34" />
+        <state relative-caret-position="205">
+          <caret line="91" lean-forward="true" selection-end-line="280" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/verify.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="439">
+          <caret line="84" column="53" lean-forward="true" selection-start-line="84" selection-start-column="53" selection-end-line="84" selection-end-column="53" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
