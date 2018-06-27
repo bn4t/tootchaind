@@ -21,8 +21,6 @@ class Blockchain:
 
         self.initialize_mastodon()
 
-        # Create the genesis block
-        # self.new_block(previous_hash='1', proof=100)
 
     def new_block(self, proof, previous_hash):
         """
@@ -47,7 +45,7 @@ class Blockchain:
 
         # create the block
         block = {
-            'index': self.last_block_index(),
+            'index': self.last_block_index()+1,
             'timestamp': time(),
             'transactions': to_mine_transactions,
             'proof': proof,
@@ -85,8 +83,7 @@ class Blockchain:
     def last_block(self):
         json_tl = self.mastodon.timeline_home(limit=1)
 
-        return json.loads(self.unescape_text(
-            self.clean_html(json_tl[0]['content'])))  # returns the latest block from the timeline formatted as json
+        return json.loads(self.unescape_text(self.clean_html(json_tl[0]['content'])))  # returns the latest block from the timeline formatted as json
 
     def last_block_index(self):
         last_block_json = self.last_block()
@@ -97,8 +94,7 @@ class Blockchain:
         return int(last_block_json['proof'])
 
     def last_hash(self):
-        last_block_json = self.last_block()
-        return str(last_block_json['previous_hash'])
+        return str(self.hash(self.last_block()))
 
     @staticmethod
     def hash(block):
@@ -208,6 +204,7 @@ class Blockchain:
                     clean_data = self.clean_html(data)
 
                     self.new_transaction(username, clean_data)
+                    print("finished notification")
 
         # clear notifications
         self.mastodon.notifications_clear()
@@ -227,7 +224,7 @@ def mine():
     proof = blockchain.proof_of_work()
 
     # Forge the new Block by adding it to the chain
-    previous_hash = blockchain.hash(last_block)
+    previous_hash = blockchain.last_hash()
     block = blockchain.new_block(proof, previous_hash)
 
     response = {
