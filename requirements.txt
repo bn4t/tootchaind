@@ -2,3 +2,4 @@ Mastodon.py
 requests
 flask==0.12.2
 schedule
+BeautifulSoup4

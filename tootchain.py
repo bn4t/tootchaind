@@ -1,10 +1,12 @@
 import hashlib
 import json
 import time
-from time import time, sleep
+from time import time
 import os
+import re
 from mastodon import Mastodon
 from flask import Flask, jsonify, request
+from bs4 import BeautifulSoup
 
 
 class Blockchain:
@@ -20,37 +22,7 @@ class Blockchain:
         self.initialize_mastodon()
 
         # Create the genesis block
-        self.new_block(previous_hash='1', proof=100)
-
-    def valid_chain(self, chain):
-        """
-        Determine if a given blockchain is valid
-
-        :param chain: A blockchain
-        :return: True if valid, False if not
-        """
-
-        last_block = chain[0]
-        current_index = 1
-
-        while current_index < len(chain):
-            block = chain[current_index]
-            print(f'{last_block}')
-            print(f'{block}')
-            print("\n-----------\n")
-            # Check that the hash of the block is correct
-            last_block_hash = self.hash(last_block)
-            if block['previous_hash'] != last_block_hash:
-                return False
-
-            # Check that the Proof of Work is correct
-            if not self.valid_proof(last_block['proof'], block['proof'], last_block_hash):
-                return False
-
-            last_block = block
-            current_index += 1
-
-        return True
+        # self.new_block(previous_hash='1', proof=100)
 
     def new_block(self, proof, previous_hash):
         """
@@ -68,24 +40,25 @@ class Blockchain:
 
             # check if array is empty
             if self.current_transactions:
+                # add transaction to block and remove it from the array
                 to_mine_transactions.append(self.current_transactions[0])
                 self.current_transactions.pop(0)
 
+
         # create the block
         block = {
-            'index': len(self.chain) + 1,
+            'index': self.last_block_index(),
             'timestamp': time(),
             'transactions': to_mine_transactions,
             'proof': proof,
-            'previous_hash': previous_hash or self.hash(self.chain[-1]),
+            'previous_hash': previous_hash,
         }
-
 
         # Toot the formatted block
         self.mastodon.status_post(json.dumps(block, indent=2, sort_keys=True), visibility='unlisted')
 
         # Append the block to the chain
-        self.chain.append(block)
+        # self.chain.append(block)
         return block
 
     def new_transaction(self, sender, data):
@@ -107,11 +80,25 @@ class Blockchain:
             'data': data,
         })
 
-        return self.last_block['index'] + 1
+        return self.last_block_index() + 1
 
-    @property
     def last_block(self):
-        return self.chain[-1]
+        json_tl = self.mastodon.timeline_home(limit=1)
+
+        return json.loads(self.unescape_text(
+            self.clean_html(json_tl[0]['content'])))  # returns the latest block from the timeline formatted as json
+
+    def last_block_index(self):
+        last_block_json = self.last_block()
+        return int(last_block_json['index'])
+
+    def last_proof(self):
+        last_block_json = self.last_block()
+        return int(last_block_json['proof'])
+
+    def last_hash(self):
+        last_block_json = self.last_block()
+        return str(last_block_json['previous_hash'])
 
     @staticmethod
     def hash(block):
@@ -122,22 +109,19 @@ class Blockchain:
         """
 
         # We must make sure that the Dictionary is Ordered, or we'll have inconsistent hashes
-        block_string = json.dumps(block, sort_keys=True).encode()
+        block_string = json.dumps(str(block), sort_keys=True).encode()
         return hashlib.sha256(block_string).hexdigest()
 
-    def proof_of_work(self, last_block):
+    def proof_of_work(self):
         """
         Simple Proof of Work Algorithm:
 
          - Find a number p' such that hash(pp') contains leading 4 zeroes
          - Where p is the previous proof, and p' is the new proof
-
-        :param last_block: <dict> last Block
-        :return: <int>
         """
 
-        last_proof = last_block['proof']
-        last_hash = self.hash(last_block)
+        last_proof = self.last_proof()
+        last_hash = self.last_hash()
 
         proof = 0
         while self.valid_proof(last_proof, proof, last_hash) is False:
@@ -188,6 +172,46 @@ class Blockchain:
             api_base_url=self.instance_url
         )
 
+    def unescape_text(self, text):
+        """Converts HTML entities to unicode.  For example '&amp;' becomes '&'."""
+
+        soup = BeautifulSoup(text, "html.parser")
+        return soup.text
+
+    def chunks(s, n):
+        """Produce `n`-character chunks from `s`."""
+        for start in range(0, len(s), n):
+            yield s[start:start + n]
+
+    def clean_html(self, raw_html):
+        cleanr = re.compile('<.*?>')
+        cleantext = re.sub(cleanr, '', raw_html)
+        return cleantext
+
+    def get_notifications(self):
+        json_notif = self.mastodon.notifications()
+
+        # iterate through notifications
+        for i, current_notif in enumerate(json_notif):
+            # check if the notification type is mention
+            if current_notif['type'] == 'mention':
+
+                # fill in variables
+                username = str(current_notif['account']['username'])
+                content = str(current_notif['status']['content'])
+
+                # check if the correct command is used
+                if content.startswith('<p><span class="h-card"><a href="https://toot.cafe/@testblckchn" class="u-url '
+                                      'mention">@<span>testblckchn</span></a></span> !tx '):
+                    # use substring of content without the command
+                    data = content[128:]
+                    clean_data = self.clean_html(data)
+
+                    self.new_transaction(username, clean_data)
+
+        # clear notifications
+        self.mastodon.notifications_clear()
+
 
 # Instantiate the Node
 app = Flask(__name__)
@@ -200,7 +224,7 @@ blockchain = Blockchain()
 def mine():
     # We run the proof of work algorithm to get the next proof...
     last_block = blockchain.last_block
-    proof = blockchain.proof_of_work(last_block)
+    proof = blockchain.proof_of_work()
 
     # Forge the new Block by adding it to the chain
     previous_hash = blockchain.hash(last_block)
@@ -234,6 +258,13 @@ def new_transaction():
 
     response = {'message': f'Transaction will be added to Block {index}'}
     return jsonify(response), 201
+
+
+# check for new mentions
+@app.route('/mention', methods=['GET'])
+def check_for_new_tx():
+    blockchain.get_notifications()
+    return "t"
 
 
 if __name__ == '__main__':
