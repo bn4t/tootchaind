@@ -20,10 +20,8 @@ class Tootchaind:
 
         # generate genesis block if there is no previous one
         timeline = self.mastodon.timeline_home()
-        # if len(timeline) < 1:
-        #    self.gen_genesis_block()
-
-        # self.gen_genesis_block()
+        if len(timeline) < 1:
+            self.gen_genesis_block()
 
         # retrieve txs and create a block
         self.retrieve_tx()
@@ -78,12 +76,14 @@ class Tootchaind:
 
         # Enforce 50 character limit so blocks don't exceed the 500 characters which fit into a toot
         if len(data) > 50:
-            return 1
+            return False
 
         self.pending_tx.append({
             'sender': sender,
             'data': data,
         })
+
+        return True
 
     # create a new block
     def create_block(self):
@@ -145,8 +145,13 @@ class Tootchaind:
                     data = content[134:]
                     clean_data = self.clean_html(data)
 
-                    self.new_transaction(username, clean_data)
-                    print("processed tx")
+                    # only include transaction if it doesn't exceeds the length limit
+                    if self.new_transaction(username, clean_data):
+                        print("processed tx")
+
+                        # exit loop after processing 3 notifications
+                        if i is 2:
+                            return
 
                     # delete notification
                     self.mastodon.notifications_dismiss(notif_id)
