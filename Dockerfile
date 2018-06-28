@@ -21,5 +21,6 @@ COPY . /usr/src/app
 ADD crontab.txt /crontab.txt
 ADD entry.sh /entry.sh
 
+RUN chmod +x /entry.sh
 
 CMD ["/entry.sh"]
