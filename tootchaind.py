@@ -23,7 +23,7 @@ class Tootchaind:
         # if len(timeline) < 1:
         #    self.gen_genesis_block()
 
-        self.gen_genesis_block()
+        # self.gen_genesis_block()
 
         # retrieve txs and create a block
         self.retrieve_tx()
@@ -140,7 +140,7 @@ class Tootchaind:
                         '<p><span class="h-card"><a href="https://toot.cafe/@tootchain_test" class="u-url '
                         'mention">@<span>tootchain_test</span></a></span> !tx '):
                     # use substring of content without the command
-                    data = content[132:]
+                    data = content[134:]
                     clean_data = self.clean_html(data)
 
                     self.new_transaction(username, clean_data)
@@ -199,4 +199,3 @@ class Tootchaind:
 
 blockchain = Tootchaind()
 
-blockchain.__init__()

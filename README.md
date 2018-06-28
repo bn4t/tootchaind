@@ -22,15 +22,15 @@ Structure of a block
 
 ````
 {
-  "height": 123,
-  "timestamp": 1530168776,
+  "height": 3,
+  "timestamp": 1530187688,
   "transactions": [
     {
-        "sender": "bn4t@toot.cafe",
-        "data": "Hello World!"
+      "sender": "bn4t",
+      "data": "Hello World!"
     }
   ],
-  "nonce": 1234,
-  "previous_hash": "7fdcde7c3f0db44f3f7ff62b0d0ecc828536b8576f48ab690e6a49adaecc5105"
+  "nonce": 131384,
+  "previous_hash": "700766aa540f604809a86db178d1c96dccaea5af45632c47fe310382b268a71d"
 }
 ````
