@@ -16,11 +16,11 @@ class Tootchaind:
         self.mastodon = None
 
         # instance url
-        self.instance_url = 'https://toot.cafe'
+        self.instance_url = os.environ['INSTANCE_URL']
 
         # To make this bot working add the credentials of an account
-        self.email = ""
-        self.password = ""
+        self.email = os.environ['BOT_EMAIL']
+        self.password = os.environ['BOT_PW']
 
         self.initialize_mastodon()
 
