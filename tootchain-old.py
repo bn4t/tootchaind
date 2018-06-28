@@ -21,7 +21,23 @@ class Tootchain:
 
         self.initialize_mastodon()
 
-        #self.new_block(previous_hash='1', proof=100)
+        # self.genesis_block(previous_hash='1', proof=100)
+
+    def genesis_block(self, proof, previous_hash):
+
+        # create the block
+        block = {
+            'index': 1,
+            'timestamp': time(),
+            'transactions': None,
+            'proof': proof,
+            'previous_hash': previous_hash,
+        }
+
+        # Toot the formatted block
+        self.mastodon.status_post(json.dumps(block), visibility='unlisted')
+
+        return block
 
     def new_block(self, proof, previous_hash):
         """
@@ -43,10 +59,9 @@ class Tootchain:
                 to_mine_transactions.append(self.current_transactions[0])
                 self.current_transactions.pop(0)
 
-
         # create the block
         block = {
-            'index': self.last_block_index()+1,
+            'index': self.last_block_index() + 1,
             'timestamp': time(),
             'transactions': to_mine_transactions,
             'proof': proof,
@@ -84,7 +99,8 @@ class Tootchain:
     def last_block(self):
         json_tl = self.mastodon.timeline_home(limit=1)
 
-        return json.loads(self.unescape_text(self.clean_html(json_tl[0]['content'])))  # returns the latest block from the timeline formatted as json
+        return json.loads(self.unescape_text(
+            self.clean_html(json_tl[0]['content'])))  # returns the latest block from the timeline formatted as json
 
     def last_block_index(self):
         last_block_json = self.last_block()
@@ -96,7 +112,7 @@ class Tootchain:
 
     def last_hash(self):
 
-        print("last Hash:"+self.hash(self.last_block()))
+        print("last Hash:" + self.hash(self.last_block()))
         return str(self.hash(self.last_block()))
 
     @staticmethod
@@ -143,8 +159,6 @@ class Tootchain:
         guess = f'{last_proof}{proof}{last_hash}'.encode()
         guess_hash = hashlib.sha256(guess).hexdigest()
 
-        if guess_hash[:4] == "0000":
-            print(str(last_proof)+" | "+str(proof)+" | "+guess_hash)
         return guess_hash[:4] == "0000"
 
     # initialize Mastodon
@@ -164,8 +178,8 @@ class Tootchain:
                 client_id='bot_clientcred.txt',
                 api_base_url=self.instance_url
             )
-            email = "zawuzeme@99pubblicita.com"
-            password = "zawuzeme@99pubblicita.com"
+            email = "tootchain@topikt.com"
+            password = "tootchain@topikt.com"
             self.mastodon.log_in(email, password, to_file='bot_usercred.txt')
 
         self.mastodon = Mastodon(
@@ -203,10 +217,11 @@ class Tootchain:
                 content = str(current_notif['status']['content'])
 
                 # check if the correct command is used
-                if content.startswith('<p><span class="h-card"><a href="https://toot.cafe/@testblckchn" class="u-url '
-                                      'mention">@<span>testblckchn</span></a></span> !tx '):
+                if content.startswith(
+                        '<p><span class="h-card"><a href="https://toot.cafe/@tootchain_test" class="u-url '
+                        'mention">@<span>tootchain_test</span></a></span> !tx '):
                     # use substring of content without the command
-                    data = content[128:]
+                    data = content[132:]
                     clean_data = self.clean_html(data)
 
                     self.new_transaction(username, clean_data)
@@ -267,6 +282,13 @@ def new_transaction():
 def check_for_new_tx():
     blockchain.get_notifications()
     return " "
+
+
+@app.route('/update', methods=['GET'])
+def update():
+    check_for_new_tx()
+    mine()
+    return "success"
 
 
 if __name__ == '__main__':
