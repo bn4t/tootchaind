@@ -28,6 +28,7 @@ class Tootchaind:
         timeline = self.mastodon.timeline_home()
         if len(timeline) < 1:
             self.gen_genesis_block()
+            return
 
         # retrieve txs and create a block
         self.retrieve_tx()
