@@ -1,0 +1,1 @@
+*/10 * * * * python /tootchaind.py >> /var/log/tootchaind.log
