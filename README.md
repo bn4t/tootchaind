@@ -48,3 +48,16 @@ Structure of a block
   "previous_hash": "700766aa540f604809a86db178d1c96dccaea5af45632c47fe310382b268a71d"
 }
 ````
+
+## Installation
+
+The easiest way is to use the provided Docker image.
+
+Run:
+
+````
+docker run registry.gitlab.com/bn4t/tootchaind:latest \
+--env INSTANCE_URL=https://your.instance \
+--env BOT_EMAIL=bot@example.com \
+--env BOT_PW=your_password
+````
