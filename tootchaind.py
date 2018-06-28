@@ -74,8 +74,10 @@ class Tootchaind:
     # create new transaction
     def new_transaction(self, sender, data):
 
-        # Enforce 50 character limit so blocks don't exceed the 500 characters which fit into a toot
-        if len(data) > 50:
+        tx_data = sender + data
+
+        # Enforce 70 character limit per tx so blocks don't exceed the 500 characters which fit into a toot
+        if len(tx_data) > 70:
             return False
 
         self.pending_tx.append({
@@ -141,6 +143,7 @@ class Tootchaind:
                 if content.startswith(
                         '<p><span class="h-card"><a href="https://toot.cafe/@tootchain_test" class="u-url '
                         'mention">@<span>tootchain_test</span></a></span> !tx '):
+
                     # use substring of content without the command
                     data = content[134:]
                     clean_data = self.clean_html(data)
