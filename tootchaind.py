@@ -128,6 +128,8 @@ class Tootchaind:
 
         # iterate through notifications
         for i, current_notif in enumerate(json_notif):
+            notif_id = current_notif['id']
+
             # check if the notification type is mention
             if current_notif['type'] == 'mention':
 
@@ -146,8 +148,8 @@ class Tootchaind:
                     self.new_transaction(username, clean_data)
                     print("processed tx")
 
-        # clear notifications
-        self.mastodon.notifications_clear()
+                    # delete notification
+                    self.mastodon.notifications_dismiss(notif_id)
 
     #####################################
     #               Utils               #
@@ -198,4 +200,3 @@ class Tootchaind:
 
 
 blockchain = Tootchaind()
-
