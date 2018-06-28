@@ -2,7 +2,12 @@ FROM alpine:edge
 
 
 RUN apk update && apk upgrade \
-    && apk add python3
+    && apk add --update \
+    python3 \
+    python3-dev \
+    py-pip \
+    build-base \
+  && pip install virtualenv
 
 WORKDIR /usr/src/app
 
