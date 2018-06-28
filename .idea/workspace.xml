@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="467c2817-17ea-4e69-9337-19073f215dd2" name="Default" comment="trac">
+    <list default="true" id="467c2817-17ea-4e69-9337-19073f215dd2" name="Default" comment="cleanup">
       <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2018-06-27T111512.201.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2018-06-27T111513.201.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2018-06-27T111615.201.json" beforeDir="false" />
@@ -54,7 +54,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2018-06-27T113118.201.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tootchaind.py" beforeDir="false" afterPath="$PROJECT_DIR$/tootchaind.py" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.idea/httpRequests/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -66,18 +65,18 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/tootchain$tootchain.coverage" NAME="tootchain Coverage Results" MODIFIED="1530185510644" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/tootchain$tootchaind.coverage" NAME="tootchaind Coverage Results" MODIFIED="1530190388845" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/tootchain$tootchaind.coverage" NAME="tootchaind Coverage Results" MODIFIED="1530191185100" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/tootchain$verify.coverage" NAME="verify Coverage Results" MODIFIED="1530110405268" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/tootchain$blckchn.coverage" NAME="blckchn Coverage Results" MODIFIED="1530087873243" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/tootchain$blockchain.coverage" NAME="blockchain Coverage Results" MODIFIED="1530083476471" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="tootchaind.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="tootchaind.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tootchaind.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="147" column="85" selection-start-line="147" selection-start-column="85" selection-end-line="147" selection-end-column="85" />
+            <state relative-caret-position="-1726">
+              <caret line="83" column="29" lean-forward="true" selection-start-line="83" selection-start-column="29" selection-end-line="83" selection-end-column="29" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -85,14 +84,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tootchain-old.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tootchain-old.py">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
-              <caret line="237" selection-start-line="237" selection-end-line="237" selection-end-column="24" />
-              <folding>
-                <element signature="e#0#14#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="34">
+              <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
             </state>
           </provider>
         </entry>
@@ -105,18 +101,6 @@
                 <caret line="29" column="15" lean-forward="true" selection-start-line="29" selection-start-column="15" selection-end-line="29" selection-end-column="15" />
               </first_editor>
               <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="verify.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/verify.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
-              <folding>
-                <element signature="e#0#14#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -175,7 +159,6 @@
         <option value="$PROJECT_DIR$/tootbot.py" />
         <option value="$PROJECT_DIR$/blckchn.py" />
         <option value="$PROJECT_DIR$/blockchain.py" />
-        <option value="$PROJECT_DIR$/cron-sample.sh" />
         <option value="$APPLICATION_CONFIG_DIR$/scratches/rest-api.http" />
         <option value="$PROJECT_DIR$/MastodonClass.py" />
         <option value="$PROJECT_DIR$/requirements.txt" />
@@ -184,6 +167,8 @@
         <option value="$PROJECT_DIR$/tootchain-old.py" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/tootchaind.py" />
+        <option value="$PROJECT_DIR$/cron-sample.sh" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -843,7 +828,28 @@
       <option name="project" value="LOCAL" />
       <updated>1530189322563</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="length limit detection improvements">
+      <created>1530190506498</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1530190506498</updated>
+    </task>
+    <task id="LOCAL-00010" summary="improve character limit">
+      <created>1530191493190</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1530191493190</updated>
+    </task>
+    <task id="LOCAL-00011" summary="cleanup">
+      <created>1530191810850</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1530191810850</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -855,9 +861,9 @@
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49934897" visible="true" weight="0.19586207" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49934897" weight="0.19586207" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13411458" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13411458" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32965517" />
@@ -887,13 +893,15 @@
     </ignored-roots>
     <MESSAGE value="updated code" />
     <MESSAGE value="fix last_hash def" />
-    <MESSAGE value="cleanup" />
     <MESSAGE value="started reimplementation" />
     <MESSAGE value="rewrite done" />
     <MESSAGE value="update README and fix transaction retrieval bug" />
     <MESSAGE value="track .idea files" />
     <MESSAGE value="fix deleting only processed notifications" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix deleting only processed notifications" />
+    <MESSAGE value="length limit detection improvements" />
+    <MESSAGE value="improve character limit" />
+    <MESSAGE value="cleanup" />
+    <option name="LAST_COMMIT_MESSAGE" value="cleanup" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -1127,13 +1135,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/blckchn.py" />
     <entry file="file://$PROJECT_DIR$/tootbot.py" />
-    <entry file="file://$PROJECT_DIR$/cron-sample.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MastodonClass.py" />
     <entry file="file://$PROJECT_DIR$/bot_clientcred.txt">
       <provider selected="true" editor-type-id="text-editor" />
@@ -1193,13 +1194,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/cron-sample.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tootchaind.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="147" column="85" selection-start-line="147" selection-start-column="85" selection-end-line="147" selection-end-column="85" />
+        <state relative-caret-position="-1726">
+          <caret line="83" column="29" lean-forward="true" selection-start-line="83" selection-start-column="29" selection-end-line="83" selection-end-column="29" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
         </state>
       </provider>
     </entry>
