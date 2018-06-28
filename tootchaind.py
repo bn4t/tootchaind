@@ -60,8 +60,8 @@ class Tootchaind:
                 client_id='client_cred.txt',
                 api_base_url=self.instance_url
             )
-            email = "tootchain@topikt.com"
-            password = "tootchain@topikt.com"
+            email = ""
+            password = ""
             self.mastodon.log_in(email, password, to_file='user_cred.txt')
 
         # initialize Mastodon Client
