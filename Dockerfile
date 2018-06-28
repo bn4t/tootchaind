@@ -8,7 +8,7 @@ RUN apk update && apk upgrade \
     py-pip \
     build-base \
   && pip install virtualenv \
-  &&   && rm -rf /var/cache/apk/*
+  && rm -rf /var/cache/apk/*
 
 WORKDIR /app
 
