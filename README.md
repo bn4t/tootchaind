@@ -1,12 +1,14 @@
 # Tootchain
 
+**This bot is currently in beta. The blockchain might be deleted at any time.**
+
 This is a bot running on the [Mastodon](https://joinmastadon.org) network with which you can store messages on a cryptographically verifiable blockchain.
 The blockchain is also stored on Mastodon.
 
 ___
 To create a so called transaction send a toot in following format:
 
-`@tootchain@toot.cafe !tx YOUR_MESSAGE`
+`@tootchain_test@toot.cafe !tx YOUR_MESSAGE`
 
 
 ## Technical info
