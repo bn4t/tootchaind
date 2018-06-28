@@ -1,7 +1,19 @@
 # Tootchain
 
+This is a bot running on the [Mastodon](https://joinmastadon.org) network with which you can store messages on a cryptographically verifiable blockchain.
+The blockchain is also stored on Mastodon.
 
-## Block
+___
+To create a so called transaction send a toot in following format:
+
+`@tootchain@toot.cafe !tx YOUR_MESSAGE`
+
+
+## Technical info
+
+- **Block time:** 10 minutes
+- **Max tx/block:** 3 transactions
+- **Hash function:** sha256
 
 ### Blockhash
 
