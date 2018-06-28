@@ -14,7 +14,13 @@ class Tootchaind:
     def __init__(self):
         self.pending_tx = []
         self.mastodon = None
+
+        # instance url
         self.instance_url = 'https://toot.cafe'
+
+        # To make this bot working add the credentials of an account
+        self.email = ""
+        self.password = ""
 
         self.initialize_mastodon()
 
@@ -60,9 +66,8 @@ class Tootchaind:
                 client_id='client_cred.txt',
                 api_base_url=self.instance_url
             )
-            email = ""
-            password = ""
-            self.mastodon.log_in(email, password, to_file='user_cred.txt')
+
+            self.mastodon.log_in(self.email, self.password, to_file='user_cred.txt')
 
         # initialize Mastodon Client
         self.mastodon = Mastodon(
@@ -144,7 +149,7 @@ class Tootchaind:
                         '<p><span class="h-card"><a href="https://toot.cafe/@tootchain_test" class="u-url '
                         'mention">@<span>tootchain_test</span></a></span> !tx '):
 
-                    # use substring of content without the command
+                    # use substring of content without the command and mention
                     data = content[134:]
                     clean_data = self.clean_html(data)
 
