@@ -4,16 +4,16 @@ FROM alpine:edge
 RUN apk update && apk upgrade \
     && apk add --update \
     python3 \
-    python \
     python3-dev \
     py-pip \
     build-base \
-  && pip install virtualenv
+  && pip install virtualenv \
+  &&   && rm -rf /var/cache/apk/*
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
-COPY requirements.txt /usr/src/app/
-RUN pip install -r requirements.txt
+ONBUILD COPY . /app
+ONBUILD RUN virtualenv /env && /env/bin/pip install -r /app/requirements.txt
 
 COPY . /usr/src/app
 
