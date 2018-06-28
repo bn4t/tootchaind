@@ -53,11 +53,11 @@ Structure of a block
 
 The easiest way is to use the provided Docker image.
 
-Run:
+To run the Docker image, execute following command:
 
 ````
 docker run registry.gitlab.com/bn4t/tootchaind:latest \
---env INSTANCE_URL=https://your.instance \
---env BOT_EMAIL=bot@example.com \
---env BOT_PW=your_password
+    --env INSTANCE_URL=https://your.instance \
+    --env BOT_EMAIL=bot@example.com \
+    --env BOT_PW=your_password
 ````
