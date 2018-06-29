@@ -7,6 +7,7 @@ RUN apk update && apk upgrade \
     python3-dev \
     py-pip \
     build-base \
+    bash \
   && pip install virtualenv \
   && rm -rf /var/cache/apk/*
 
