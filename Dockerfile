@@ -11,13 +11,9 @@ RUN apk update && apk upgrade \
   && pip install virtualenv \
   && rm -rf /var/cache/apk/*
 
-WORKDIR /app
 
 ONBUILD COPY . /app
 ONBUILD RUN virtualenv /env && /env/bin/pip install -r /app/requirements.txt
-
-COPY . /usr/src/app
-
 
 ADD crontab.txt /crontab.txt
 ADD entry.sh /entry.sh
