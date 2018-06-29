@@ -213,10 +213,10 @@ class Tootchaind:
 
         # Debug
         if guess_hash[:4] == "7007":
-            print(
-                "guessed hash: " + guess_hash + " | nonce: " + str(
-                    nonce) + " | time: " + timestamp + " | prev_hash: " + previous_blockhash + " | data: " + str(data))
+            print("guessed hash: " + guess_hash + " | nonce: " + str(
+                nonce) + " | time: " + timestamp + " | prev_hash: " + previous_blockhash + " | data: " + str(data))
 
         return guess_hash[:4] == "7007"
+
 
 blockchain = Tootchaind()
