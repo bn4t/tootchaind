@@ -8,7 +8,7 @@ The blockchain is also stored on Mastodon.
 ___
 To create a so called transaction send a toot in following format:
 
-`@tootchain_test@toot.cafe !tx YOUR_MESSAGE`
+`@tootchain@toot.cafe !tx YOUR_MESSAGE`
 
 
 ## Technical info
