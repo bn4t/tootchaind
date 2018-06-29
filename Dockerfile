@@ -12,6 +12,8 @@ RUN apk update && apk upgrade \
   && rm -rf /var/cache/apk/*
 
 
+WORKDIR /app
+
 COPY . /app
 RUN virtualenv /env && /env/bin/pip install -r /app/requirements.txt
 
