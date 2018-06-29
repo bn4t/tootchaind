@@ -19,6 +19,7 @@ class Tootchaind:
         self.instance_url = os.environ['INSTANCE_URL']
 
         # To make this bot working add the credentials of an account
+        self.username = os.environ['BOT_USERNAME']
         self.email = os.environ['BOT_EMAIL']
         self.password = os.environ['BOT_PW']
 
@@ -145,13 +146,13 @@ class Tootchaind:
                 username = str(current_notif['account']['username'])
                 content = str(current_notif['status']['content'])
 
+                startswith_string = '<p><span class="h-card"><a href="' + self.instance_url + '/@' + self.username + '" class="u-url mention">@<span>' + self.username + '</span></a></span> !tx '
+
                 # check if the correct command is used
-                if content.startswith(
-                        '<p><span class="h-card"><a href="https://toot.cafe/@tootchain_test" class="u-url '
-                        'mention">@<span>tootchain_test</span></a></span> !tx '):
+                if content.startswith(startswith_string):
 
                     # use substring of content without the command and mention
-                    data = content[134:]
+                    data = content[len(startswith_string):]
                     clean_data = self.clean_html(data)
 
                     # only include transaction if it doesn't exceeds the length limit
