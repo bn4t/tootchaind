@@ -206,12 +206,15 @@ class Tootchaind:
 
     @staticmethod
     def valid_proof(nonce, previous_blockhash, data):
-        timestamp = int(time())
+        timestamp = str(int(time()))  # Convert to string so we don't get inconsistent hashes
 
         guess = f'{nonce}{timestamp}{previous_blockhash}{data}'.encode()
         guess_hash = hashlib.sha256(guess).hexdigest()
 
-        return guess_hash[:4] == "7007"
+        # Debug
+        if guess_hash[:4] == "7007":
+            print(guess_hash + " | " + nonce + " | " + str(timestamp) + " | " + previous_blockhash + " | " + data)
 
+        return guess_hash[:4] == "7007"
 
 blockchain = Tootchaind()
