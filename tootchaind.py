@@ -214,7 +214,8 @@ class Tootchaind:
         # Debug
         if guess_hash[:4] == "7007":
             print(
-                "guessed hash: " + guess_hash + " | nonce: " + nonce + " | time: " + timestamp + " | prev_hash: " + previous_blockhash + " | data: " + data)
+                "guessed hash: " + guess_hash + " | nonce: " + str(
+                    nonce) + " | time: " + timestamp + " | prev_hash: " + previous_blockhash + " | data: " + data)
 
         return guess_hash[:4] == "7007"
 
