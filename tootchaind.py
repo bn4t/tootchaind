@@ -163,8 +163,8 @@ class Tootchaind:
                         if i is 2:
                             return
 
-                    # delete notification
-                    self.mastodon.notifications_dismiss(notif_id)
+            # delete notification no matter what type it is
+            self.mastodon.notifications_dismiss(notif_id)
 
     #####################################
     #               Utils               #
