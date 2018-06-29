@@ -49,16 +49,26 @@ Structure of a block
 }
 ````
 
+# Set up your own Tootchain bot
+
 ## Installation
 
 The easiest way is to use the provided Docker image.
 
-To run the Docker image, execute following command:
+Run the image:
 
 ````
-docker run --env INSTANCE_URL=https://your.instance \
+docker run --detach \
+    --name tootchaind \
+    --restart always \
+    --env INSTANCE_URL=https://your.instance \
     --env BOT_EMAIL=bot@example.com \
     --env BOT_USERNAME=username \
     --env BOT_PW=your_password \
     registry.gitlab.com/bn4t/tootchaind:latest
 ````
+
+## Adjust block time
+
+To adjust the block time, you need to clone the repo, 
+set the cron interval (found in `crontab.txt`) to your desired value and build the image.
