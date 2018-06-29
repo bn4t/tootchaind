@@ -1,1 +1,1 @@
-*/10 * * * * /env/bin/python /app/tootchaind.py >> /var/log/tootchaind.log
+*/10 * * * * /env/bin/python3 /app/tootchaind.py >> /var/log/tootchaind.log
