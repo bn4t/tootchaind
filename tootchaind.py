@@ -194,10 +194,10 @@ class Tootchaind:
 
     def last_hash(self):
         block = self.last_block()
-        nonce = json.dumps(block['nonce'])
-        timestamp = json.dumps(block['timestamp'])
-        previous_blockhash = json.dumps(block['previous_hash'])
-        data = json.dumps(block['transactions'])
+        nonce = block['nonce']
+        timestamp = block['timestamp']
+        previous_blockhash = block['previous_hash']
+        data = block['transactions']
 
         blockdata = f'{nonce}{timestamp}{previous_blockhash}{data}'.encode()
         blockhash = hashlib.sha256(blockdata).hexdigest()
@@ -206,7 +206,7 @@ class Tootchaind:
 
     @staticmethod
     def valid_proof(nonce, previous_blockhash, data):
-        timestamp = int(time())  # Convert to string so we don't get inconsistent hashes
+        timestamp = int(time())
 
         guess = f'{nonce}{timestamp}{previous_blockhash}{data}'.encode()
         guess_hash = hashlib.sha256(guess).hexdigest()
