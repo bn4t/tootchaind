@@ -3,7 +3,7 @@ import os
 from mastodon import Mastodon
 
 
-class Tootchaind:
+class DeleteAllPosts:
 
     def __init__(self):
         self.mastodon = None
@@ -47,13 +47,15 @@ class Tootchaind:
             api_base_url=self.instance_url
         )
 
-    @staticmethod
-    def delete_all_statuses():
-        toots = Mastodon.timeline_home()
+    def delete_all_statuses(self):
 
-        for i, current_toot in enumerate(toots):
-            toot_id = current_toot['id']
-            Mastodon.status_delete(toot_id)
-  
+        while enumerate(self.mastodon.timeline_home()) is not 0:
+            toots = self.mastodon.timeline_home()
 
-tootchain = Tootchaind()
+            for i, current_toot in enumerate(toots):
+                toot_id = current_toot['id']
+                self.mastodon.status_delete(toot_id)
+                print("deleted post " + toot_id)
+
+
+tootchain = DeleteAllPosts()
