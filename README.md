@@ -1,3 +1,6 @@
+
+[![pipeline status](https://gitlab.com/bn4t/tootchaind/badges/master/pipeline.svg)](https://gitlab.com/bn4t/tootchaind/commits/master)
+
 # Tootchain
 
 **This bot is currently in beta. The blockchain might be deleted at any time.**
