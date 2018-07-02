@@ -208,7 +208,7 @@ class Tootchaind:
     def valid_proof(nonce, previous_blockhash, data):
         timestamp = int(time())
 
-        guess = f'{nonce}{timestamp}{previous_blockhash}{data}'.encode()
+        guess = f'{int(nonce)}{timestamp}{str(previous_blockhash)}{list(data)}'.encode()
         guess_hash = hashlib.sha256(guess).hexdigest()
 
         # Debug
