@@ -194,12 +194,8 @@ class Tootchaind:
 
     def last_hash(self):
         block = self.last_block()
-        nonce = json.dumps(block['nonce'], sort_keys=True)
-        timestamp = json.dumps(block['timestamp'], sort_keys=True)
-        previous_blockhash = json.dumps(block['previous_hash'], sort_keys=True)
-        data = json.dumps(block['transactions'], sort_keys=True)
 
-        blockdata = f'{nonce}{timestamp}{previous_blockhash}{data}'.encode()
+        blockdata = json.dumps(block, sort_keys=True).encode()
         blockhash = hashlib.sha256(blockdata).hexdigest()
 
         return blockhash
