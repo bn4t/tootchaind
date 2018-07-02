@@ -1,7 +1,4 @@
-import json
 import os
-import re
-from time import time
 
 from mastodon import Mastodon
 
@@ -20,6 +17,8 @@ class Tootchaind:
         self.password = os.environ['BOT_PW']
 
         self.initialize_mastodon()
+
+        self.delete_all_statuses()
 
     # initialize Mastodon
     def initialize_mastodon(self):
@@ -48,9 +47,13 @@ class Tootchaind:
             api_base_url=self.instance_url
         )
 
-    def delete_all_statuses(self):
-        
-        Mastodon.status_delete(id)
+    @staticmethod
+    def delete_all_statuses():
+        toots = Mastodon.timeline_home()
+
+        for i, current_toot in enumerate(toots):
+            toot_id = current_toot['id']
+            Mastodon.status_delete(toot_id)
   
 
 tootchain = Tootchaind()
