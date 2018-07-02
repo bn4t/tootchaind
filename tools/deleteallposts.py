@@ -55,7 +55,7 @@ class DeleteAllPosts:
             for i, current_toot in enumerate(toots):
                 toot_id = current_toot['id']
                 self.mastodon.status_delete(toot_id)
-                print("deleted post " + toot_id)
+                print("deleted post " + str(toot_id))
 
 
 tootchain = DeleteAllPosts()
