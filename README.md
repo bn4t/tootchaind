@@ -1,4 +1,3 @@
-
 [![pipeline status](https://gitlab.com/bn4t/tootchaind/badges/master/pipeline.svg)](https://gitlab.com/bn4t/tootchaind/commits/master)
 
 # Tootchain
@@ -39,16 +38,16 @@ Structure of a block
 
 ````
 {
-  "height": 3,
-  "timestamp": 1530187688,
+  "height": 84,
+  "timestamp": 1530597001,
   "transactions": [
-    {
+      {
       "sender": "bn4t",
       "data": "Hello World!"
     }
   ],
-  "nonce": 131384,
-  "previous_hash": "700766aa540f604809a86db178d1c96dccaea5af45632c47fe310382b268a71d"
+  "nonce": 44973,
+  "previous_hash": "3bf51b443e872ad38e041a4537e10fcd515000eb3cefea6dbc5f5e6bbfcf2955"
 }
 ````
 
