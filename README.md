@@ -28,6 +28,8 @@ blockhash = sha256([NONCE][TIMESTAMP][PREV_BLOCKHASH][DATA])
 
 Every blockhash starts with `7007` (`TOOT` written in numbers)
 
+**Note:** The `previous_hash` field is differently generated. See [here](https://gitlab.com/bn4t/tootchaind/blob/master/tootchaind.py#L195).
+
 ### Genesis Block
 
 The genesis blockhash is `0000000000000000000000000000000000000000000000000000000000000000`
