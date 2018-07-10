@@ -76,3 +76,10 @@ docker run --detach \
 
 To adjust the block time, you need to clone the repo, 
 set the cron interval (found in `crontab.txt`) to your desired value and build the image.
+
+
+# Thanks
+
+I would like to thank [@Nolan](https://toot.cafe/@nolan) (Owner of toot.cafe Mastodon instance) for giving me permission to run this bot on his instance.
+
+Thank you Nolan!
