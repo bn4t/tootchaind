@@ -2,8 +2,6 @@
 
 # Tootchain
 
-**This bot is currently in beta. The blockchain might be deleted at any time.**
-
 This is a bot running on the [Mastodon](https://joinmastadon.org) network with which you can store messages on a cryptographically verifiable blockchain.
 The blockchain is also stored on Mastodon.
 
