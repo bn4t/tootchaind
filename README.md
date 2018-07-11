@@ -53,6 +53,12 @@ Structure of a block
 }
 ````
 
+# Verify blocks
+
+At the moment, blocks can unfortuantely only be verified manually, due to mastodons API limitations.
+
+To verify a block you can use the [verify.py](https://gitlab.com/bn4t/tootchaind/blob/master/verify.py) script.
+
 # Set up your own Tootchain bot
 
 ## Installation
