@@ -201,16 +201,16 @@ class Tootchaind:
         return blockhash
 
     @staticmethod
-    def valid_proof(nonce, previous_blockhash, data):
+    def valid_proof(nonce, previous_hash, data):
         timestamp = int(time())
 
-        guess = f'{nonce}{timestamp}{previous_blockhash}{data}'.encode()
+        guess = f'{nonce}{timestamp}{previous_hash}{data}'.encode()
         guess_hash = hashlib.sha256(guess).hexdigest()
 
         # Debug
         if guess_hash[:4] == "7007":
             print("guessed hash: " + guess_hash + " | nonce: " + str(
-                nonce) + " | time: " + str(timestamp) + " | prev_hash: " + previous_blockhash + " | data: " + str(data))
+                nonce) + " | time: " + str(timestamp) + " | prev_hash: " + previous_hash + " | data: " + str(data))
 
         return guess_hash[:4] == "7007"
 
